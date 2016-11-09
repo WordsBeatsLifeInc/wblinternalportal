@@ -1,0 +1,753 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:8889
+-- Generation Time: Nov 09, 2016 at 05:36 AM
+-- Server version: 5.5.42
+-- PHP Version: 7.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `WBL_v10`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Attendance`
+--
+
+CREATE TABLE `Attendance` (
+  `attendanceID` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `week1` double DEFAULT NULL,
+  `week2` double DEFAULT NULL,
+  `week3` double DEFAULT NULL,
+  `week4` double DEFAULT NULL,
+  `week5` double DEFAULT NULL,
+  `week6` double DEFAULT NULL,
+  `week7` double DEFAULT NULL,
+  `week8` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Class_Eval_By_Student`
+--
+
+CREATE TABLE `Class_Eval_By_Student` (
+  `evalType` varchar(50) NOT NULL,
+  `week` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `question1` varchar(50) DEFAULT NULL,
+  `question2` varchar(50) DEFAULT NULL,
+  `question3` varchar(50) DEFAULT NULL,
+  `question4` varchar(50) DEFAULT NULL,
+  `question5` varchar(50) DEFAULT NULL,
+  `question6` varchar(50) DEFAULT NULL,
+  `question7` varchar(50) DEFAULT NULL,
+  `question8` varchar(50) DEFAULT NULL,
+  `question9` varchar(50) DEFAULT NULL,
+  `question10` varchar(50) DEFAULT NULL,
+  `question11` varchar(50) DEFAULT NULL,
+  `question12` varchar(50) DEFAULT NULL,
+  `question13` varchar(50) DEFAULT NULL,
+  `question14` varchar(50) DEFAULT NULL,
+  `question15` varchar(50) DEFAULT NULL,
+  `question16` varchar(50) DEFAULT NULL,
+  `question17` varchar(50) DEFAULT NULL,
+  `question18` varchar(50) DEFAULT NULL,
+  `question19` varchar(50) DEFAULT NULL,
+  `question20` varchar(50) DEFAULT NULL,
+  `question21` varchar(50) DEFAULT NULL,
+  `question22` varchar(50) DEFAULT NULL,
+  `question23` varchar(50) DEFAULT NULL,
+  `question24` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Course`
+--
+
+CREATE TABLE `Course` (
+  `courseID` int(11) NOT NULL,
+  `courseName` varchar(50) DEFAULT NULL,
+  `startDate` date DEFAULT NULL,
+  `endDate` date DEFAULT NULL,
+  `courseTime` time DEFAULT NULL,
+  `courseDescription` varchar(300) DEFAULT NULL,
+  `elementID` int(11) DEFAULT NULL,
+  `courseLocation` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Donation`
+--
+
+CREATE TABLE `Donation` (
+  `email` varchar(50) NOT NULL,
+  `amount` decimal(19,4) DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Element`
+--
+
+CREATE TABLE `Element` (
+  `elementID` int(11) NOT NULL,
+  `elementName` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Enroll`
+--
+
+CREATE TABLE `Enroll` (
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Evaluation`
+--
+
+CREATE TABLE `Evaluation` (
+  `evalType` varchar(50) NOT NULL,
+  `week` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Event`
+--
+
+CREATE TABLE `Event` (
+  `eventID` int(11) NOT NULL,
+  `eventTitle` varchar(50) DEFAULT NULL,
+  `eventDescription` varchar(50) DEFAULT NULL,
+  `eventDateTime` datetime DEFAULT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Forum`
+--
+
+CREATE TABLE `Forum` (
+  `forumID` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `datePosted` datetime NOT NULL,
+  `titleID` int(11) NOT NULL,
+  `question` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ForumThread`
+--
+
+CREATE TABLE `ForumThread` (
+  `threadID` int(11) NOT NULL,
+  `forumID` int(11) NOT NULL,
+  `answer` longtext NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `dateTime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ForumTitle`
+--
+
+CREATE TABLE `ForumTitle` (
+  `titleID` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Inbox`
+--
+
+CREATE TABLE `Inbox` (
+  `email` varchar(50) NOT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `message` varchar(500) DEFAULT NULL,
+  `sentDate` datetime DEFAULT NULL,
+  `receiveremail` varchar(20) DEFAULT NULL,
+  `inboxid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inboxMessage`
+--
+
+CREATE TABLE `inboxMessage` (
+  `email` varchar(50) NOT NULL,
+  `subject` varchar(50) DEFAULT NULL,
+  `message` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Instructor_Eval_By_Student`
+--
+
+CREATE TABLE `Instructor_Eval_By_Student` (
+  `evalType` varchar(50) NOT NULL,
+  `week` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `question1` varchar(50) DEFAULT NULL,
+  `question2` varchar(50) DEFAULT NULL,
+  `question3` varchar(50) DEFAULT NULL,
+  `question4` varchar(50) DEFAULT NULL,
+  `question5` varchar(50) DEFAULT NULL,
+  `question6` varchar(50) DEFAULT NULL,
+  `question7` varchar(50) DEFAULT NULL,
+  `question8` varchar(50) DEFAULT NULL,
+  `question9` varchar(50) DEFAULT NULL,
+  `question10` varchar(50) DEFAULT NULL,
+  `question11` varchar(50) DEFAULT NULL,
+  `question12` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Relationship`
+--
+
+CREATE TABLE `Relationship` (
+  `studentID` varchar(50) NOT NULL,
+  `parentID` varchar(50) NOT NULL,
+  `relationshipType` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Self_Eval`
+--
+
+CREATE TABLE `Self_Eval` (
+  `evalType` varchar(50) NOT NULL,
+  `week` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `question1` int(11) DEFAULT NULL,
+  `question2` int(11) DEFAULT NULL,
+  `question3` int(11) DEFAULT NULL,
+  `question4` int(11) DEFAULT NULL,
+  `question5` int(11) DEFAULT NULL,
+  `question6` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Staff`
+--
+
+CREATE TABLE `Staff` (
+  `email` varchar(50) NOT NULL,
+  `portfolio` varchar(200) DEFAULT NULL,
+  `internEmail` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Staff_Course`
+--
+
+CREATE TABLE `Staff_Course` (
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student`
+--
+
+CREATE TABLE `Student` (
+  `email` varchar(50) NOT NULL,
+  `wardOfResidence` varchar(50) DEFAULT NULL,
+  `wardOfProgram` varchar(50) DEFAULT NULL,
+  `PSAOfProgram` varchar(50) DEFAULT NULL,
+  `DCOneCardNum` int(11) DEFAULT NULL,
+  `apprenticeLevel` varchar(20) DEFAULT NULL,
+  `primaryCarePhysician` varchar(50) DEFAULT NULL,
+  `insuranceCompany` varchar(50) DEFAULT NULL,
+  `insuranceGroup` varchar(50) DEFAULT NULL,
+  `insurancePolicyNumber` int(11) DEFAULT NULL,
+  `allergies` varchar(50) DEFAULT NULL,
+  `dietaryRestrictions` varchar(50) DEFAULT NULL,
+  `currentGrade` varchar(15) DEFAULT NULL,
+  `schoolName` varchar(50) DEFAULT NULL,
+  `expectedGradYear` int(11) DEFAULT NULL,
+  `collegePlans` varchar(200) DEFAULT NULL,
+  `futureCollegeName` varchar(50) DEFAULT NULL,
+  `plannedMajor_trade` varchar(50) DEFAULT NULL,
+  `lastSchoolAttended` varchar(50) DEFAULT NULL,
+  `lastGradDate` date DEFAULT NULL,
+  `pastAreaStudy` varchar(50) DEFAULT NULL,
+  `futherEducation` varchar(20) DEFAULT NULL,
+  `job` varchar(50) DEFAULT NULL,
+  `jobDescription` varchar(400) DEFAULT NULL,
+  `employer` varchar(100) DEFAULT NULL,
+  `wage` varchar(10) DEFAULT NULL,
+  `careerGoals` varchar(400) DEFAULT NULL,
+  `desiredWage` varchar(10) DEFAULT NULL,
+  `resume` varchar(15) DEFAULT NULL,
+  `artisticResume` varchar(15) DEFAULT NULL,
+  `workshops` varchar(300) DEFAULT NULL,
+  `pastClasses` varchar(20) DEFAULT NULL,
+  `className` varchar(300) DEFAULT NULL,
+  `apprentice` varchar(10) DEFAULT NULL,
+  `DJ` varchar(50) DEFAULT NULL,
+  `Graffiti` varchar(50) DEFAULT NULL,
+  `MC` varchar(50) DEFAULT NULL,
+  `Poetry` varchar(50) DEFAULT NULL,
+  `Murals` varchar(50) DEFAULT NULL,
+  `Breakdance` varchar(50) DEFAULT NULL,
+  `MusicProduction` varchar(50) DEFAULT NULL,
+  `Chess` varchar(50) DEFAULT NULL,
+  `photography` varchar(50) DEFAULT NULL,
+  `hiphop` varchar(50) DEFAULT NULL,
+  `tShirtSize` varchar(50) DEFAULT NULL,
+  `applicationStatus` varchar(50) DEFAULT NULL,
+  `bucks` decimal(19,4) DEFAULT NULL,
+  `portfolio` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student_Element`
+--
+
+CREATE TABLE `Student_Element` (
+  `studentID` varchar(50) NOT NULL,
+  `elementID` int(11) NOT NULL,
+  `elementStatus` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student_Eval_By_Instructor`
+--
+
+CREATE TABLE `Student_Eval_By_Instructor` (
+  `evalType` varchar(50) NOT NULL,
+  `week` int(11) NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `staffID` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `question1` double DEFAULT NULL,
+  `question2` double DEFAULT NULL,
+  `question3` double DEFAULT NULL,
+  `question4` double DEFAULT NULL,
+  `question5` double DEFAULT NULL,
+  `question6` double DEFAULT NULL,
+  `question7` double DEFAULT NULL,
+  `question8` double DEFAULT NULL,
+  `question9` double DEFAULT NULL,
+  `question10` double DEFAULT NULL,
+  `question11` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Support_Letter`
+--
+
+CREATE TABLE `Support_Letter` (
+  `dateWritten` date NOT NULL,
+  `studentID` varchar(50) NOT NULL,
+  `parentID` varchar(50) NOT NULL,
+  `letterOfSupport` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sysdiagrams`
+--
+
+CREATE TABLE `sysdiagrams` (
+  `name` varchar(160) NOT NULL,
+  `principal_id` int(11) NOT NULL,
+  `diagram_id` int(11) NOT NULL,
+  `version` int(11) DEFAULT NULL,
+  `definition` longblob
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `User`
+--
+
+CREATE TABLE `User` (
+  `email` varchar(50) NOT NULL,
+  `userType` varchar(12) DEFAULT NULL,
+  `firstName` varchar(20) DEFAULT NULL,
+  `lastName` varchar(30) DEFAULT NULL,
+  `cellPhone` varchar(12) DEFAULT NULL,
+  `homePhone` varchar(12) DEFAULT NULL,
+  `dateOfBirth` date DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `genderIdentification` varchar(20) DEFAULT NULL,
+  `homeAddress` varchar(30) DEFAULT NULL,
+  `city` varchar(30) DEFAULT NULL,
+  `stateAbbreviation` varchar(2) DEFAULT NULL,
+  `zipCode` int(11) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `passwordHash` varchar(50) DEFAULT NULL,
+  `passwordSalt` varchar(50) DEFAULT NULL,
+  `SignUpStatus` char(10) DEFAULT NULL,
+  `profilePicture` longblob
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Attendance`
+--
+ALTER TABLE `Attendance`
+  ADD PRIMARY KEY (`attendanceID`),
+  ADD KEY `FK_Attendance_Enroll` (`staffID`,`courseID`,`studentID`);
+
+--
+-- Indexes for table `Class_Eval_By_Student`
+--
+ALTER TABLE `Class_Eval_By_Student`
+  ADD PRIMARY KEY (`evalType`,`week`,`studentID`,`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Class_Eval_By_Student` (`evalType`,`week`,`studentID`,`staffID`,`courseID`);
+
+--
+-- Indexes for table `Course`
+--
+ALTER TABLE `Course`
+  ADD PRIMARY KEY (`courseID`),
+  ADD KEY `FK_Course_Element` (`elementID`);
+
+--
+-- Indexes for table `Donation`
+--
+ALTER TABLE `Donation`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `Element`
+--
+ALTER TABLE `Element`
+  ADD PRIMARY KEY (`elementID`);
+
+--
+-- Indexes for table `Enroll`
+--
+ALTER TABLE `Enroll`
+  ADD PRIMARY KEY (`studentID`,`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Staff_Course_Student` (`studentID`,`staffID`,`courseID`),
+  ADD KEY `FK_Staff_Course_Student_Staff_Course` (`staffID`,`courseID`);
+
+--
+-- Indexes for table `Evaluation`
+--
+ALTER TABLE `Evaluation`
+  ADD PRIMARY KEY (`evalType`,`week`,`studentID`,`staffID`,`courseID`);
+
+--
+-- Indexes for table `Event`
+--
+ALTER TABLE `Event`
+  ADD PRIMARY KEY (`eventID`),
+  ADD KEY `FK_Event_User1` (`email`);
+
+--
+-- Indexes for table `Forum`
+--
+ALTER TABLE `Forum`
+  ADD PRIMARY KEY (`forumID`),
+  ADD KEY `FK_Forum_ForumTitle` (`titleID`),
+  ADD KEY `FK_Forum_User1` (`email`);
+
+--
+-- Indexes for table `ForumThread`
+--
+ALTER TABLE `ForumThread`
+  ADD PRIMARY KEY (`threadID`),
+  ADD KEY `FK_ForumThread_Forum` (`forumID`);
+
+--
+-- Indexes for table `ForumTitle`
+--
+ALTER TABLE `ForumTitle`
+  ADD PRIMARY KEY (`titleID`);
+
+--
+-- Indexes for table `Inbox`
+--
+ALTER TABLE `Inbox`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `inboxMessage`
+--
+ALTER TABLE `inboxMessage`
+  ADD KEY `FK_inboxMessage_Inbox` (`email`);
+
+--
+-- Indexes for table `Instructor_Eval_By_Student`
+--
+ALTER TABLE `Instructor_Eval_By_Student`
+  ADD PRIMARY KEY (`evalType`,`week`,`studentID`,`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Instructor_Eval_By_Student` (`evalType`,`week`,`studentID`,`staffID`,`courseID`);
+
+--
+-- Indexes for table `Relationship`
+--
+ALTER TABLE `Relationship`
+  ADD PRIMARY KEY (`studentID`,`parentID`),
+  ADD UNIQUE KEY `IX_Relationship` (`studentID`,`parentID`),
+  ADD KEY `FK_Relationship_User` (`parentID`);
+
+--
+-- Indexes for table `Self_Eval`
+--
+ALTER TABLE `Self_Eval`
+  ADD PRIMARY KEY (`evalType`,`week`,`studentID`,`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Self_Eval` (`evalType`,`week`,`studentID`,`staffID`,`courseID`);
+
+--
+-- Indexes for table `Staff`
+--
+ALTER TABLE `Staff`
+  ADD PRIMARY KEY (`email`),
+  ADD KEY `FK_Staff_Staff` (`internEmail`);
+
+--
+-- Indexes for table `Staff_Course`
+--
+ALTER TABLE `Staff_Course`
+  ADD PRIMARY KEY (`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Staff_Course` (`staffID`,`courseID`),
+  ADD KEY `FK_Staff_Course_Course` (`courseID`);
+
+--
+-- Indexes for table `Student`
+--
+ALTER TABLE `Student`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `Student_Element`
+--
+ALTER TABLE `Student_Element`
+  ADD PRIMARY KEY (`studentID`,`elementID`),
+  ADD KEY `FK_Student_Element_Element` (`elementID`);
+
+--
+-- Indexes for table `Student_Eval_By_Instructor`
+--
+ALTER TABLE `Student_Eval_By_Instructor`
+  ADD PRIMARY KEY (`evalType`,`week`,`studentID`,`staffID`,`courseID`),
+  ADD UNIQUE KEY `IX_Student_Eval_By_Instructor` (`evalType`,`week`,`studentID`,`staffID`,`courseID`);
+
+--
+-- Indexes for table `Support_Letter`
+--
+ALTER TABLE `Support_Letter`
+  ADD PRIMARY KEY (`dateWritten`,`studentID`,`parentID`),
+  ADD UNIQUE KEY `IX_Support_Letter` (`dateWritten`,`parentID`,`studentID`),
+  ADD KEY `FK_Support_Letter_Relationship` (`studentID`,`parentID`);
+
+--
+-- Indexes for table `sysdiagrams`
+--
+ALTER TABLE `sysdiagrams`
+  ADD PRIMARY KEY (`diagram_id`),
+  ADD UNIQUE KEY `UK_principal_name` (`principal_id`,`name`);
+
+--
+-- Indexes for table `User`
+--
+ALTER TABLE `User`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Attendance`
+--
+ALTER TABLE `Attendance`
+  MODIFY `attendanceID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Course`
+--
+ALTER TABLE `Course`
+  MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Event`
+--
+ALTER TABLE `Event`
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Forum`
+--
+ALTER TABLE `Forum`
+  MODIFY `forumID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ForumThread`
+--
+ALTER TABLE `ForumThread`
+  MODIFY `threadID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sysdiagrams`
+--
+ALTER TABLE `sysdiagrams`
+  MODIFY `diagram_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Attendance`
+--
+ALTER TABLE `Attendance`
+  ADD CONSTRAINT `FK_Attendance_Enroll` FOREIGN KEY (`staffID`, `courseID`, `studentID`) REFERENCES `Enroll` (`staffID`, `courseID`, `studentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Course`
+--
+ALTER TABLE `Course`
+  ADD CONSTRAINT `FK_Course_Element` FOREIGN KEY (`elementID`) REFERENCES `Element` (`elementID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Donation`
+--
+ALTER TABLE `Donation`
+  ADD CONSTRAINT `FK_Donation_User` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Enroll`
+--
+ALTER TABLE `Enroll`
+  ADD CONSTRAINT `FK_Staff_Course_Student_Staff_Course` FOREIGN KEY (`staffID`, `courseID`) REFERENCES `Staff_Course` (`staffID`, `courseID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Staff_Course_Student_Student` FOREIGN KEY (`studentID`) REFERENCES `Student` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Event`
+--
+ALTER TABLE `Event`
+  ADD CONSTRAINT `FK_Event_User` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_Event_User1` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Forum`
+--
+ALTER TABLE `Forum`
+  ADD CONSTRAINT `FK_Forum_ForumTitle` FOREIGN KEY (`titleID`) REFERENCES `ForumTitle` (`titleID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_Forum_User1` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ForumThread`
+--
+ALTER TABLE `ForumThread`
+  ADD CONSTRAINT `FK_ForumThread_Forum` FOREIGN KEY (`forumID`) REFERENCES `Forum` (`forumID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Inbox`
+--
+ALTER TABLE `Inbox`
+  ADD CONSTRAINT `FK_Inbox_User` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inboxMessage`
+--
+ALTER TABLE `inboxMessage`
+  ADD CONSTRAINT `FK_inboxMessage_Inbox` FOREIGN KEY (`email`) REFERENCES `Inbox` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Relationship`
+--
+ALTER TABLE `Relationship`
+  ADD CONSTRAINT `FK_Relationship_Student1` FOREIGN KEY (`studentID`) REFERENCES `Student` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Relationship_User` FOREIGN KEY (`parentID`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Staff`
+--
+ALTER TABLE `Staff`
+  ADD CONSTRAINT `FK_Staff_Staff` FOREIGN KEY (`internEmail`) REFERENCES `Staff` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_Staff_User` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Staff_Course`
+--
+ALTER TABLE `Staff_Course`
+  ADD CONSTRAINT `FK_Staff_Course_Course` FOREIGN KEY (`courseID`) REFERENCES `Course` (`courseID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_Staff_Course_Staff` FOREIGN KEY (`staffID`) REFERENCES `Staff` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Student`
+--
+ALTER TABLE `Student`
+  ADD CONSTRAINT `FK_Student_User` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Student_Element`
+--
+ALTER TABLE `Student_Element`
+  ADD CONSTRAINT `FK_Student_Element_Element` FOREIGN KEY (`elementID`) REFERENCES `Element` (`elementID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_Student_Element_Student` FOREIGN KEY (`studentID`) REFERENCES `Student` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `Support_Letter`
+--
+ALTER TABLE `Support_Letter`
+  ADD CONSTRAINT `FK_Support_Letter_Relationship` FOREIGN KEY (`studentID`, `parentID`) REFERENCES `Relationship` (`studentID`, `parentID`) ON DELETE CASCADE ON UPDATE CASCADE;
