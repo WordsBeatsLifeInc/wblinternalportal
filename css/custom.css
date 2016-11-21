@@ -78,8 +78,8 @@ body {
 }
 
 input[type=submit].button-normal {
-    padding:5px 15px; 
-    background-color:#AA3030; 
+    padding:5px 15px;
+    background-color:#AA3030;
     border:0 none;
     cursor:pointer;
     color: #ffffff;
@@ -219,7 +219,7 @@ h5 {
 .pagination,
 .pagination li:first-child a,
 .pagination li:first-child span,
-.pagination li:last-child a, 
+.pagination li:last-child a,
 .pagination li:last-child span,
 .pager li a,
 .pager li a:hover,
@@ -305,7 +305,7 @@ h2 {
 	padding-top: 5em;
 	padding-left: 5em;
 	padding-top: 5em;
-    padding-right: 5em;	
+    padding-right: 5em;
 }
 
 .login-button {
@@ -347,7 +347,6 @@ body{
 input[placeholder] {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	font-size: .2em;
 	text-transform: lowercase;
 	letter-spacing: .08em;
 	font-style: italic;
@@ -1029,7 +1028,7 @@ table {
     width:100%;
 }
 
-input:read-only { 
+input:read-only {
     border: none;
 	background-color: transparent;
 }
